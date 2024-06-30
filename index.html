@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurnToWhite!</title>
+    <style>
+        .box{
+            background-color: black;
+        }
+        #first{
+            background-color: white;
+        }
+    </style>
+    <script>
+        function toggle(self){
+            if(self.value === 'black'){
+                self.value = 'white';
+                self.style.backgroundColor = 'white';
+            }
+            else{
+                self.value = 'black';
+                self.style.backgroundColor = 'black';
+            }
+        }
+        var f = {
+            toggle1 : function(){
+                var bList = document.querySelectorAll('.box');
+                toggle(bList[0]);
+                toggle(bList[1]);
+                check();
+            },
+            toggle2 : function(){
+                var bList = document.querySelectorAll('.box');
+                toggle(bList[1]);
+                toggle(bList[2]);
+                check();
+            },
+            toggle3 : function(){
+                var bList = document.querySelectorAll('.box');
+                toggle(bList[0]);
+                toggle(bList[2]);
+                check();
+            }
+        }
+        function check(){
+            var bList = document.querySelectorAll('.box');
+            var flag = 0;
+            for(let i = 0; i < bList.length; i++){
+                if(bList[i].value === 'black'){
+                    flag = 1;
+                }
+                else{
+                    continue;
+                }
+            }
+            if(flag === 0) {
+                alert("success!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="Toggle1" onclick="f.toggle1()">
+    <input type="button" value="Toggle2" onclick="f.toggle2()">
+    <input type="button" value="Toggle3" onclick="f.toggle3()"><br>
+    <input id="first" class="box" type="button" value="white">
+    <input class="box" type="button" value="black">
+    <input class="box" type="button" value="black">
+</body>
+</html>
